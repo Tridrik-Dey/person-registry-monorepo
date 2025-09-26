@@ -1,0 +1,148 @@
+/* =========================
+   CRA boilerplate (kept)
+   ========================= */
+.App { text-align: center; }
+.App-logo { height: 40vmin; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo { animation: App-logo-spin infinite 20s linear; }
+}
+.App-header {
+  background-color: #282c34; min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; font-size: calc(10px + 2vmin); color: white;
+}
+.App-link { color: #61dafb; }
+@keyframes App-logo-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* =========================
+   CF "pill" input & button
+   ========================= */
+.pill-input {
+  border-radius: 28px !important;
+  padding: 14px 16px !important;
+  background: #f8fafc;
+}
+.pill-btn {
+  border-radius: 18px !important;
+  padding: 12px 18px !important;
+  font-weight: 700;
+}
+
+/* =========================
+   Helper line under CF input
+   ========================= */
+.helper-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+.helper-hint { color: #6b7280; }
+
+/* If you ever render an icon inside the link */
+.helper-line .with-icon { display: inline-flex; align-items: center; gap: 6px; }
+.helper-line .icon { line-height: 1; font-size: 14px; }
+
+/* Make ONLY the helper “Filtri avanzati” button look like a plain link */
+.search .helper-line button.linklike {
+  all: unset;                 /* wipe all UA styles (borders, padding, background, etc.) */
+  cursor: pointer;
+  color: #0b63ff;
+  text-decoration: underline;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1;
+}
+.search .helper-line button.linklike:hover { color: #084dcc; }
+
+/* Fallback: any other .linklike buttons elsewhere (kept lightweight) */
+button.linklike {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  color: #0b63ff;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1;
+}
+button.linklike:hover { color: #084dcc; }
+
+/* =========================
+   Modal (Advanced Filters)
+   ========================= */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.35);
+  display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+.modal-dialog {
+  background: #fff; border-radius: 10px; width: 900px; max-width: 95vw;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; max-height: 85vh;
+}
+.modal-header, .modal-footer { padding: 12px 16px; border-bottom: 1px solid #eee; }
+.modal-footer { border-top: 1px solid #eee; border-bottom: none; }
+.modal-body { padding: 12px 16px; overflow: auto; }
+.modal-close { background: transparent; border: none; font-size: 22px; line-height: 1; cursor: pointer; margin-left: auto; }
+
+/* =========================
+   Filters grid (inside modal)
+   ========================= */
+.filters-grid {
+  display: grid; grid-template-columns: 1fr 200px; gap: 16px; align-items: end; margin-bottom: 12px;
+}
+.field > span { display: block; margin-bottom: 4px; font-weight: 600; }
+.field > small { display: block; color: #666; margin-top: 4px; }
+.field input { width: 100%; padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; }
+
+/* =========================
+   Results table (modal)
+   ========================= */
+.table { width: 100%; border-collapse: collapse; }
+.table thead th {
+  text-align: left; font-weight: 700; font-size: 14px; border-bottom: 1px solid #eee; padding: 8px;
+}
+.table tbody td { padding: 8px; border-bottom: 1px solid #f2f2f2; font-size: 14px; }
+.row-click { cursor: pointer; }
+.row-click:hover { background: #f8f9fb; }
+
+/* =========================
+   Messages / States
+   ========================= */
+.hint { padding: 8px 0; color: #444; }
+.error {
+  padding: 8px 10px; background: #ffe6e6; border: 1px solid #ffb3b3; color: #8a0000; border-radius: 6px;
+}
+.muted { color: #666; text-align: center; padding: 14px; }
+
+/* =========================
+   Accessibility
+   ========================= */
+:focus { outline: 2px solid #5b9cff; outline-offset: 2px; }
+
+/* =========================
+   Banners (top-of-page notices)
+   ========================= */
+.banner { margin: 10px 0; padding: 10px 12px; border-radius: 8px; font-size: 14px; }
+.banner-success { background: #e9f8ef; border: 1px solid #bce7cb; color: #0b6a2b; }
+.banner-error   { background: #ffecec; border: 1px solid #ffc2c2; color: #9b1515; }
+
+/* =========================
+   Page layout polish
+   (pairs with index.css but safe to keep)
+   ========================= */
+.container { max-width: 920px; margin: 0 auto; padding: 16px; }
+.header h1 { margin: 0 0 4px; }
+.header p { margin: 0 0 16px; color: #555; }
+
+/* Search area spacing:
+   - keep generic rule for "normal" buttons
+   - DO NOT affect the linklike trigger (excluded via :not(.linklike))
+*/
+.search input { padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; }
+.search .row,
+.search-row { display: flex; gap: 8px; align-items: center; }        /* support both patterns */
+.search button:not(.linklike) { padding: 8px 12px; border-radius: 6px; }

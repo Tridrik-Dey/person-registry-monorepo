@@ -1,0 +1,222 @@
+/* src/index.css */
+:root {
+  --bg:#f7f7fb;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --primary:#2563eb;
+  --primary-900:#1e40af;
+  --danger:#b91c1c;
+  --warn:#b45309;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.container { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+
+/* Page header */
+.header { background:var(--card); border:1px solid var(--border); padding:20px; border-radius:12px; margin-bottom:16px; }
+.header h1 { margin:0; font-size:28px; }
+.header p  { margin:6px 0 0; color:var(--muted); }
+
+/* ---- Cards (single source of truth; de-duplicated) ---- */
+.card {
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:20px;
+  border-radius:18px;
+  margin:16px 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.card-title { font-weight:700; font-size:22px; margin:0 0 12px; }
+
+/* Utilities & form basics */
+.search-row { display:flex; gap:12px; }
+.search-row input { flex:1; }
+
+.grid.two { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+@media (max-width: 720px) { .grid.two { grid-template-columns: 1fr; } }
+
+.field { display:flex; flex-direction:column; gap:6px; }
+label { font-weight:600; }
+input {
+  width:100%;
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  outline:none;
+  background:#f9fafb;
+}
+input:focus { border-color: var(--primary); background:#fff; }
+
+.toolbar { display:flex; gap:8px; justify-content:flex-end; margin-bottom:12px; }
+
+.btn {
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#fff;
+  cursor:pointer;
+  font-weight:600;
+}
+.btn:disabled { opacity:0.6; cursor:not-allowed; }
+.btn.primary { background:var(--primary); color:#fff; border-color:var(--primary); }
+.btn.primary:hover { background:var(--primary-900); }
+.btn.danger { background:#ef4444; color:#fff; border-color:#ef4444; }
+.btn.warn   { background:#d97706; color:#fff; border-color:#d97706; }
+
+.hint { color:var(--muted); margin-top:8px; }
+
+/* =========================
+   Search card (scoped tweaks)
+   ========================= */
+
+/* tighten top gap */
+.card--search { padding-top:12px; display: flow-root; }
+.card--search .card__header { padding-top:0; padding-bottom:8px; }
+.card--search .card__title,
+.card--search .card-title { margin-top:0; margin-bottom:8px; line-height:1.2; }
+
+/* button INSIDE the same input box */
+.card--search .pill-combo { position: relative; display:block; }
+
+/* the track (input) */
+.card--search .pill-input--combo {
+  height: 50px;
+  border-radius: 12px !important;         /* match your other inputs */
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  padding-left: 16px;
+  padding-right: 140px;                   /* room for the button */
+  font-size: 16px;
+  line-height: 1.25;
+}
+.card--search .pill-input--combo:focus {
+  border-color: var(--primary);
+  background:#fff;
+  box-shadow: none;
+  outline: none;
+}
+
+/* the internal button */
+.card--search .pill-btn--combo {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 12px !important;
+  line-height: 1;
+  white-space: nowrap;
+}
+.card--search .pill-btn--combo:disabled { opacity:.65; cursor:not-allowed; }
+
+/* inline alert + helper */
+.card--search .inline-alert { margin-top:10px; }
+.card--search .helper-line   {
+  margin-top:12px;
+  display:flex;
+  align-items:baseline;
+  font-size:14px;
+}
+.card--search .linklike {
+  all: unset;
+  cursor: pointer;
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: 600;
+  line-height: 1;
+}
+.card--search .linklike:hover { color: var(--primary-900); }
+.card--search .helper-hint { color: var(--muted); margin-left:8px; }
+
+/* Put the whole helper line on the right, under the Cerca button */
+.card--search .helper-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  justify-content: flex-end;  /* push whole row to the right */
+  padding-right: 10px;        /* align with button right:10px in .pill-btn--combo */
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* Keep colors; optional */
+.card--search .helper-hint { color: var(--muted); }
+
+/* On small screens, fall back to left-align for readability */
+@media (max-width: 720px) {
+  .card--search .helper-line {
+    justify-content: flex-start;
+    padding-right: 0;
+  }
+}
+
+/* === Modal polish: top-right close + right-aligned footer button === */
+.modal-dialog {
+  position: relative;                   /* anchor for absolute children */
+}
+
+/* Header: give room for the close button on the right */
+.modal-header {
+  position: relative;
+  display: block;                       /* keep your current layout */
+  padding-right: 56px;                  /* space for the ✕ button */
+}
+
+/* Close (✕) pinned to top-right */
+.modal-close {
+  position: absolute !important;
+  top: 14px;
+  right: 16px;
+  margin: 0 !important;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 20px;                      /* size of the ✕ glyph */
+  color: #111827;
+  z-index: 1;
+}
+.modal-close:hover { background: #f3f4f6; border-color: #e5e7eb; }
+
+/* Footer: push actions to the right */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;            /* right-align */
+  gap: 8px;
+  padding: 12px 16px;
+}
+
+/* Aesthetic “Chiudi” button (works even if no .btn class present) */
+.modal-footer button {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+}
+.modal-footer button:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+/* If you already use .btn.primary and want a colored action, keep this: */
+/* .modal-footer .btn.primary { background: var(--primary); color:#fff; border-color: var(--primary); } */

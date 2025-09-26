@@ -1,0 +1,25 @@
+# Node/React
+node_modules/
+dist/
+build/
+.npm/
+.cache/
+.env
+.env.*.local
+.DS_Store
+
+# Java/Spring Boot
+target/
+*.log
+*.iml
+.idea/
+.project
+.classpath
+.settings/
+.gradle/
+build/
+out/
+# Certificates (if any)
+.cert/
+*.crt
+*.key

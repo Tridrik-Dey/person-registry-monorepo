@@ -1,0 +1,37 @@
+{
+  "header": {
+    "title": "Anagrafica Persona",
+    "subtitle": "CRUD: creazione, ricerca, aggiornamento (CF immutabile), cancellazione."
+  },
+  "search": {
+    "title": "Ricerca per Codice Fiscale",
+    "placeholder": "RSSMRA80A01H501U",
+    "button": "Cerca",
+    "advanced": "Filtri avanzati",
+    "hint": "(Cognome parziale, Provincia a 2 lettere)"
+  },
+  "filters": {
+    "title": "Filtri avanzati",
+    "surname": { "label": "Cognome (anche parziale)", "placeholder": "Ros", "help": "Minimo 2 caratteri" },
+    "province": { "label": "Provincia", "placeholder": "MI", "help": "2 lettere (es. MI)" }
+  },
+  "table": {
+    "headers": { "taxCode": "Codice Fiscale", "name": "Nome", "surname": "Cognome", "address": "Indirizzo", "province": "Provincia" },
+    "empty": "Nessun risultato. Digita almeno 2 lettere nel cognome o 2 nella provincia."
+  },
+  "status": { "searching": "Ricerca…" },
+  "buttons": { "close": "Chiudi" },
+  "messages": {
+    "personFound": "Persona trovata."
+  },
+  "errors": {
+    "fatal": {
+      "title": "Si è verificato un errore imprevisto",
+      "subtitle": "Riprova l’operazione oppure aggiorna la pagina.",
+      "ctaRetry": "Riprova",
+      "ctaRefresh": "Aggiorna pagina",
+      "errorId": "ID errore",
+      "details": "Dettagli (solo sviluppo)"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "header": {
+    "title": "Person Registry",
+    "subtitle": "CRUD: create, search, update (immutable tax code), delete."
+  },
+  "search": {
+    "title": "Search by Tax Code",
+    "placeholder": "RSSMRA80A01H501U",
+    "button": "Search",
+    "advanced": "Advanced Filters",
+    "hint": "(Partial surname, 2-letter province)"
+  },
+  "filters": {
+    "title": "Advanced Filters",
+    "surname": { "label": "Surname (partial allowed)", "placeholder": "Ros", "help": "Minimum 2 characters" },
+    "province": { "label": "Province", "placeholder": "MI", "help": "2 letters (e.g., MI)" }
+  },
+  "table": {
+    "headers": { "taxCode": "Tax Code", "name": "Name", "surname": "Surname", "address": "Address", "province": "Province" },
+    "empty": "No results. Type at least 2 letters in surname or 2 in province."
+  },
+  "status": { "searching": "Searching…" },
+  "buttons": { "close": "Close" },
+  "messages": {
+    "personFound": "Person found."
+  },
+  "errors": {
+    "fatal": {
+      "title": "An unexpected error occurred",
+      "subtitle": "Please try again or refresh the page.",
+      "ctaRetry": "Try again",
+      "ctaRefresh": "Refresh page",
+      "errorId": "Error ID",
+      "details": "Details (dev only)"
+    }
+  }
+}
